@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div style="max-width: 540px; margin: 0 auto;">
+    <div style="margin-bottom: 2rem;">
+        <p style="color: var(--warning); font-size: 0.82rem; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 4px; display: flex; align-items: center; gap: 6px;">
+            <i class="bi bi-pencil-fill"></i> Tahrirlash
+        </p>
+        <h1 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.9rem; color: var(--white); letter-spacing: -0.5px;">
+            {{ phon.title }}
+        </h1>
+    </div>
+ 
+    <div class="glass-card" style="border-color: rgba(255,165,2,0.25);">
+        <div style="height: 3px; background: linear-gradient(90deg, var(--warning), rgba(255,165,2,0.2)); border-radius: 20px 20px 0 0;"></div>
+        <div style="padding: 28px;">
+            <form method="POST">
+                {% csrf_token %}
+ 
+                <div style="margin-bottom: 20px;">
+                    <label class="form-label"><i class="bi bi-phone" style="color: var(--warning);"></i> &nbsp;Telefon nomi</label>
+                    <input type="text" name="title" class="form-control" value="{{ phon.title }}" required>
+                </div>
+ 
+                <div style="margin-bottom: 20px;">
+                    <label class="form-label"><i class="bi bi-card-text" style="color: var(--warning);"></i> &nbsp;Tavsifi</label>
+                    <input type="text" name="description" class="form-control" value="{{ phon.description }}">
+                </div>
+ 
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 24px;">
+                    <div>
+                        <label class="form-label"><i class="bi bi-cash-stack" style="color: var(--warning);"></i> &nbsp;Narxi (mln)</label>
+                        <input type="number" name="price" step="0.01" class="form-control" value="{{ phon.price }}" required>
+                    </div>
+                    <div>
+                        <label class="form-label"><i class="bi bi-boxes" style="color: var(--warning);"></i> &nbsp;Miqdori</label>
+                        <input type="number" name="quantity" class="form-control" value="{{ phon.quantity }}">
+                    </div>
+                </div>
+ 
+                <div style="display: flex; gap: 12px;">
+                    <button type="submit" class="btn-warning-soft" style="flex: 1; justify-content: center; padding: 13px; font-size: 0.95rem;">
+                        <i class="bi bi-floppy-fill"></i> O'zgarishlarni saqlash
+                    </button>
+                    <a href="{% url 'phone_list' %}" class="btn-ghost" style="padding: 13px 20px;">
+                        <i class="bi bi-x-lg"></i> Bekor
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

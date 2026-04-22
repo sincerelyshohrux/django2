@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+ 
+{% block content %}
+<div style="max-width: 480px; margin: 0 auto;">
+    <div class="glass-card" style="border-color: rgba(255,71,87,0.3);">
+        <div style="height: 3px; background: linear-gradient(90deg, var(--danger), rgba(255,71,87,0.2)); border-radius: 20px 20px 0 0;"></div>
+ 
+        <div style="padding: 36px 32px; text-align: center;">
+            <!-- Icon -->
+            <div style="width: 70px; height: 70px; background: rgba(255,71,87,0.12); border: 1px solid rgba(255,71,87,0.25); border-radius: 20px; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 1.8rem;">
+                🗑️
+            </div>
+ 
+            <h2 style="font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--white); margin-bottom: 10px; letter-spacing: -0.3px;">
+                O'chirishni tasdiqlang
+            </h2>
+ 
+            <p style="color: var(--muted); font-size: 0.95rem; line-height: 1.6; margin-bottom: 4px;">
+                Haqiqatan ham
+            </p>
+            <p style="font-family: 'Syne', sans-serif; font-weight: 700; font-size: 1.1rem; color: var(--danger); margin-bottom: 16px;">
+                "{{ phone.title }}"
+            </p>
+            <p style="color: var(--muted); font-size: 0.88rem;">
+                ni o'chirib tashlamoqchimisiz? Bu amalni ortga qaytarib bo'lmaydi.
+            </p>
+ 
+            <div style="height: 1px; background: var(--border); margin: 24px 0;"></div>
+ 
+            <form method="POST" style="display: flex; gap: 12px; justify-content: center;">
+                {% csrf_token %}
+                <button type="submit" class="btn-danger-soft" style="padding: 12px 28px; font-size: 0.95rem;">
+                    <i class="bi bi-trash3-fill"></i> Ha, o'chirilsin
+                </button>
+                <a href="{% url 'phone_list' %}" class="btn-ghost" style="padding: 12px 28px; font-size: 0.95rem;">
+                    <i class="bi bi-arrow-left"></i> Qaytish
+                </a>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
+ 
