@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Delete Task</h1>
+
+<div class="alert">
+    <p><strong>Warning!</strong> You are about to delete this task:</p>
+    <p style="font-size: 18px; margin: 15px 0;"><strong>"{{ task.title }}"</strong></p>
+    <p>This action cannot be undone. Are you sure?</p>
+</div>
+
+<form method="post">
+    {% csrf_token %}
+    <div>
+        <a href="{% url 'task_list' %}" class="btn btn-back">Cancel</a>
+        <button type="submit" class="btn btn-delete">Yes, Delete Task</button>
+    </div>
+</form>
+{% endblock %}

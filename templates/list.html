@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head><title>Telefonlar</title></head>
+<body>
+    <h1>Telefonlar</h1>
+    <a href="{% url 'phone_create' %}">+ Qo'shish</a>
+    <hr>
+    {% for phone in phones %}
+        <p>
+            <a href="{% url 'phone_detail' phone.pk %}">{{ phone.title }}</a> —
+            {{ phone.price }} so'm |
+            <a href="{% url 'phone_update' phone.pk %}">Tahrirlash</a> |
+            <a href="{% url 'phone_delete' phone.pk %}">O'chirish</a>
+        </p>
+    {% empty %}
+        <p>Hech narsa yo'q.</p>
+    {% endfor %}
+</body>
+</html>
+ 

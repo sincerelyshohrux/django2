@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-4">
+    <h2>Yangi telefon qo'shish</h2>
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3">
+            <input type="text" name="title" class="form-control" placeholder="Nomi">
+        </div>
+        <div class="mb-3">
+            <textarea name="description" class="form-control" placeholder="Tavsif"></textarea>
+        </div>
+        <div class="mb-3">
+            <input type="number" name="price" class="form-control" placeholder="Narxi">
+        </div>
+        <div class="mb-3">
+            <input type="number" name="quantity" class="form-control" placeholder="Miqdori">
+        </div>
+        <button type="submit" class="btn btn-primary">Saqlash</button>
+        <a href="{% url 'phone_list' %}" class="btn btn-secondary">Orqaga</a>
+    </form>
+</div>
+{% endblock %}
